@@ -1,7 +1,9 @@
-function Display() {
+function Display(profile) {
 
     return (
-        <div>CV will display here!</div>
+        <div>
+            {profile}
+        </div>
     )
 }
 

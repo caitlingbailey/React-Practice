@@ -1,24 +1,25 @@
-function Input() {
-    function renderTextField(name) {
+const Input =(handleSubmit, handleInputChange, inputs) => {
+       function renderTextField(name) {
         return (
-            <input type="text" name={name} placeholder={name.toUpperCase()} />
+            <input 
+            type="text" 
+            name={name} 
+            placeholder={name.toUpperCase()} 
+            onChange={handleInputChange} 
+            value={name} />
         )
-    }
-
-    function handleSubmit() {
-        console.log("Submit!")
     }
 
     return (
       <div className="input">
           <div className="information-input">
-              <form onSubmit={handleSubmit()}>
+              <form onSubmit={handleSubmit}>
                 <div id="personal-information">
                     <h2>Personal Information</h2>
-                    {renderTextField("first name")}
-                    {renderTextField("last name")}
+                    {renderTextField("firstName")}
+                    {renderTextField("lastName")}
                     {renderTextField("title")}
-                    <textarea value="ADDRESS" />
+                    {renderTextField("address")}
                     {renderTextField("phone")}
                     {renderTextField("email")}
                     {renderTextField("description")}
