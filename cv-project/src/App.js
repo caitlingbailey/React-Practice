@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Input from './components/Input';
+import Display from './components/Display';
+import useSubmitForm from "./hooks/useSubmitForm";
 
 function App() {
+  const [profile, setProfile] = useState({});
+
+  const signup = () => {
+    alert(`User created!`)
+    setProfile({status: "created"})
+    console.log(profile)
+  }
+
+  const {inputs, handleInputChange, handleSubmit} = useSubmitForm(signup);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input
+        handleInputChange = {handleInputChange}
+        handleSubmit = {handleSubmit}
+        inputs = {inputs}
+      />
+      <Display 
+        profile={profile}
+      />
     </div>
   );
 }
